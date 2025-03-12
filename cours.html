@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Découvrez nos cours de photographie pour tous les niveaux">
+    <meta name="author" content="PhotoMastery">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <title>PhotoMastery - Nos Cours de Photographie</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+
+    <style>
+        /* Styles généraux */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-gray: #f8f9fa;
+            --dark-gray: #666;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid var(--primary-color);
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Bouton retour en haut */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Styles pour les filtres */
+        .filters-section {
+            background: var(--light-gray);
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+
+        .filters-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filters-container > div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            padding: 10px 15px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        /* Styles pour les statistiques */
+        .course-stats {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .stat-item {
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: var(--dark-gray);
+            font-size: 1.1em;
+        }
+
+        /* Styles pour les cartes de cours */
+        .course-item {
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .course-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .course-item:hover .image-container img {
+            transform: scale(1.1);
+        }
+
+        .price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .popularity-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .content-container {
+            padding: 25px;
+        }
+
+        .course-details {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .course-details li {
+            color: var(--dark-gray);
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .course-details i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Styles pour la FAQ */
+        .faq-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 10px !important;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: white;
+            padding: 20px;
+            font-weight: 600;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .accordion-body {
+            padding: 20px;
+            background: white;
+        }
+
+        /* Styles pour la pagination */
+        .pagination {
+            margin-top: 40px;
+        }
+
+        .page-link {
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .page-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .page-item.active .page-link {
+            background: var(--primary-color);
+            color: white;
+        }
+        /* Styles pour le footer */
+footer {
+    background: #1f2937;
+    color: #fff;
+    padding: 70px 0 30px;
+    position: relative;
+    margin-top: 100px;
+}
+
+.footer-widget {
+    margin-bottom: 40px;
+}
+
+.footer-widget h4 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.footer-widget h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #3498db;
+}
+
+.footer-widget p {
+    color: #b3b9c7;
+    margin-bottom: 15px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.footer-widget p i {
+    color: #3498db;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-widget ul li {
+    margin-bottom: 12px;
+}
+
+.footer-widget ul li a {
+    color: #b3b9c7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    display: block;
+    padding: 3px 0;
+}
+
+.footer-widget ul li a:hover {
+    color: #3498db;
+    padding-left: 10px;
+}
+
+/* Style pour le formulaire newsletter */
+#newsletter-form {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#newsletter-form input {
+    width: 100%;
+    padding: 12px 15px;
+    background: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#newsletter-form input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+#newsletter-form button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#newsletter-form button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Style pour les icônes sociales */
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: #2d3748;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: #3498db;
+    transform: translateY(-3px);
+}
+
+/* Style pour le copyright */
+.copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #2d3748;
+}
+
+.copyright p {
+    color: #b3b9c7;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Animation au survol des éléments */
+.footer-widget ul li a,
+.social-icons a,
+#newsletter-form button {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-widget ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #3498db;
+    transition: width 0.3s ease;
+}
+
+.footer-widget ul li a:hover::after {
+    width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    footer {
+        padding: 50px 0 20px;
+    }
+
+    .footer-widget {
+        margin-bottom: 30px;
+    }
+
+    .footer-widget h4 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .social-icons {
+        text-align: center;
+    }
+
+    .copyright {
+        margin-top: 30px;
+    }
+}
+
+/* Animation pour le formulaire newsletter */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+#newsletter-form.error input {
+    border-color: #e74c3c;
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Effet de brillance sur les boutons */
+.footer-widget button {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-widget button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+}
+
+.footer-widget button:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+/* Styles pour la barre de recherche */
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-left: 20px;
+}
+
+#searchInput {
+    border: 2px solid #ffb6c1;
+    /* Bordure rose clair */
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+    background-color: #fff5f5;
+    /* Fond rose clair */
+    width: 180px;
+    color: #1f272b;
+}
+
+#searchInput:focus {
+    border-color: #ff69b4;
+    /* Bordure rose plus foncé au focus */
+    width: 220px;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+}
+
+#searchButton {
+    background-color: #ffb6c1;
+    /* Fond rose clair */
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    /* Ombre douce */
+}
+
+#searchButton:hover {
+    background-color: #ff69b4;
+    /* Fond rose plus foncé au survol */
+}
+
+/* Ajustement pour la version responsive */
+@media screen and (max-width: 991px) {
+    .search-bar {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #searchInput {
+        width: 150px;
+    }
+
+    #searchInput:focus {
+        width: 180px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Bouton retour en haut -->
+    <button id="backToTopBtn" title="Retour en haut">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+    <!-- Header -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- Logo -->
+                        <a href="index.html" class="logo">
+                            <img src="logo.png" alt="Logo" width="150" height="50">
+                        </a>
+
+                        <!-- Menu -->
+                        <ul class="nav">
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="#courses" class="active">Cours</a></li>
+                            <li><a href="about-us.html">À propos</a></li>
+                            <li><a href="contact-us.html">Contact</a></li>
+                            <li class="search-bar">
+                                <input type="text" id="searchInput" placeholder="Rechercher...">
+                                <button id="searchButton"><i class="fa fa-search"></i></button>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="main-banner" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-text text-center">
+                        <h6>Développez vos compétences</h6>
+                        <h2>Nos Cours de <em>Photographie</em></h2>
+                        <p>Découvrez notre sélection de cours adaptés à tous les niveaux</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Filtres -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="filters-container">
+                        <div class="search-filter">
+                            <input type="text" id="courseSearch" placeholder="Rechercher un cours..." class="form-control">
+                        </div>
+                        <div class="category-filter">
+                            <select id="categoryFilter" class="form-control">
+                                <option value="all">Toutes les catégories</option>
+                                <option value="debutant">Débutant</option>
+                                <option value="intermediaire">Intermédiaire</option>
+                                <option value="avance">Avancé</option>
+                            </select>
+                        </div>
+                        <div class="price-filter">
+                            <select id="priceFilter" class="form-control">
+                                <option value="all">Tous les prix</option>
+                                <option value="0-100">0€ - 100€</option>
+                                <option value="100-200">100€ - 200€</option>
+                                <option value="200+">200€ et plus</option>
+                            </select>
+                        </div>
+                        <div class="duration-filter">
+                            <select id="durationFilter" class="form-control">
+                                <option value="all">Toutes les durées</option>
+                                <option value="short">Court (< 30h)</option>
+                                <option value="medium">Moyen (30-50h)</option>
+                                <option value="long">Long (> 50h)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Statistiques -->
+    <section class="course-stats">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <i class="fa fa-users"></i>
+                        <h3 class="counter">1,200</h3>
+                        <p>Étudiants Actifs</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <i class="fa fa-graduation-cap"></i>
+                        <h3 class="counter">15</h3>
+                        <p>Cours Disponibles</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <i class="fa fa-star"></i>
+                        <h3>4.8</h3>
+                        <p>Note Moyenne</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <i class="fa fa-certificate"></i>
+                        <h3 class="counter">850</h3>
+                        <p>Certifications Délivrées</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Section des Cours -->
+    <section class="courses-grid" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row" id="coursesGrid">
+                <!-- Cours 1 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="course-item" data-category="debutant" data-price="128">
+                        <div class="image-container">
+                            <img src="assets/images/base.jpg" alt="Photographie de Base">
+                            <div class="price">
+                                <h6>128€</h6>
+                            </div>
+                            <div class="difficulty-badge">Débutant</div>
+                            <div class="popularity-badge">Populaire</div>
+                        </div>
+                        <div class="content-container">
+                            <h4>Photographie de Base</h4>
+                            <p>Apprenez les bases de la photographie et commencez à capturer de superbes images. Parfait pour les débutants.</p>
+                            <ul class="course-details">
+                                <li><i class="fa fa-clock"></i> 36 Heures</li>
+                                <li><i class="fa fa-calendar"></i> 4 Semaines</li>
+                                <li><i class="fa fa-certificate"></i> 3 Certificats</li>
+                            </ul>
+                            <div class="text-button">
+                                <a href="contact-us.html" class="btn btn-primary">S'inscrire maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cours 2 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="course-item" data-category="avance" data-price="156">
+                        <div class="image-container">
+                            <img src="assets/images/avance.jpg" alt="Photographie Avancée">
+                            <div class="price">
+                                <h6>156€</h6>
+                            </div>
+                            <div class="difficulty-badge">Avancé</div>
+                        </div>
+                        <div class="content-container">
+                            <h4>Photographie Avancée</h4>
+                            <p>Perfectionnez vos compétences avec des techniques avancées et développez votre style unique.</p>
+                            <ul class="course-details">
+                                <li><i class="fa fa-clock"></i> 48 Heures</li>
+                                <li><i class="fa fa-calendar"></i> 6 Semaines</li>
+                                <li><i class="fa fa-certificate"></i> 1 Certificat</li>
+                            </ul>
+                            <div class="text-button">
+                                <a href="contact-us.html" class="btn btn-primary">S'inscrire maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cours 3 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="course-item" data-category="intermediaire" data-price="184">
+                        <div class="image-container">
+<img src="assets/images/courses-03.jpg" alt="">                            <div class="price">
+                                <h6>184€</h6>
+                            </div>
+                            <div class="difficulty-badge">Intermédiaire</div>
+                            <div class="popularity-badge">Nouveau</div>
+                        </div>
+                        <div class="content-container">
+                            <h4>Édition de Photos</h4>
+                            <p>Maîtrisez les logiciels d'édition professionnels comme Photoshop et Lightroom.</p>
+                            <ul class="course-details">
+                                <li><i class="fa fa-clock"></i> 28 Heures</li>
+                                <li><i class="fa fa-calendar"></i> 4 Semaines</li>
+                                <li><i class="fa fa-certificate"></i> 1 Certificat</li>
+                            </ul>
+                            <div class="text-button">
+                                <a href="contact-us.html" class="btn btn-primary">S'inscrire maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cours 4 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="course-item" data-category="intermediaire" data-price="76">
+                        <div class="image-container">
+                            <img src="assets/images/studio.jpg" alt="Photographie de Studio">
+                            <div class="price">
+                                <h6>76€</h6>
+                            </div>
+                            <div class="difficulty-badge">Intermédiaire</div>
+                        </div>
+                        <div class="content-container">
+                            <h4>Photographie de Studio</h4>
+                            <p>Apprenez à maîtriser l'éclairage et les techniques de studio professionnelles.</p>
+                            <ul class="course-details">
+                                <li><i class="fa fa-clock"></i> 48 Heures</li>
+                                <li><i class="fa fa-calendar"></i> 4 Semaines</li>
+                                <li><i class="fa fa-certificate"></i> 2 Certificats</li>
+                            </ul>
+                            <div class="text-button">
+                                <a href="contact-us.html" class="btn btn-primary">S'inscrire maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="Course pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Section FAQ -->
+<section class="faq-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h6>Questions Fréquentes</h6>
+                <h2>Ce que vous devez <em>savoir</em></h2>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="courseFAQ">
+                    <!-- FAQ Item 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                Comment choisir le bon cours pour mon niveau ?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#courseFAQ">
+                            <div class="accordion-body">
+                                Nous recommandons de commencer par évaluer votre niveau actuel en photographie. Si vous débutez,
+                                optez pour notre cours "Photographie de Base". Pour ceux ayant déjà une expérience, les cours
+                                intermédiaires ou avancés seront plus adaptés.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                Quel matériel est nécessaire pour suivre les cours ?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#courseFAQ">
+                            <div class="accordion-body">
+                                Pour les cours de base, un appareil photo numérique (reflex ou hybride) est suffisant.
+                                Pour les cours avancés, une liste détaillée du matériel recommandé vous sera fournie.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                Les cours sont-ils accessibles en ligne ?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#courseFAQ">
+                            <div class="accordion-body">
+                                Oui, tous nos cours sont disponibles en format hybride : en présentiel et en ligne.
+                                Le contenu en ligne est accessible 24/7 et inclut des vidéos et des exercices pratiques.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Section CTA -->
+    <section class="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="cta-content text-center">
+                        <h2>Prêt à commencer votre voyage photographique ?</h2>
+                        <p>Inscrivez-vous maintenant et bénéficiez de 20% de réduction sur votre premier cours !</p>
+                        <div class="main-button">
+                            <a href="contact-us.html">S'inscrire Maintenant</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Contact Info</h4>
+                        <p><i class="fa fa-map-marker"></i> 123 Avenue de la Photo, Paris</p>
+                        <p><i class="fa fa-phone"></i> +33 1 23 45 67 89</p>
+                        <p><i class="fa fa-envelope"></i> contact@photomastery.fr</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Nos Cours</h4>
+                        <ul>
+                            <li><a href="#">Photographie de Base</a></li>
+                            <li><a href="#">Photographie Avancée</a></li>
+                            <li><a href="#">Édition de Photos</a></li>
+                            <li><a href="#">Photographie de Studio</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Liens Utiles</h4>
+                        <ul>
+                            <li><a href="#">À propos de nous</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+                            <li><a href="#">Conditions d'utilisation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Newsletter</h4>
+                        <form id="newsletter-form">
+                            <input type="email" placeholder="Votre email...">
+                            <button type="submit">S'abonner</button>
+                        </form>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        <p>© 2024 PhotoMastery. Tous droits réservés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            document.getElementById('preloader').style.display = 'none';
+        });
+
+        // Back to top button
+        let backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        backToTopBtn.addEventListener("click", function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+
+        // Filtrage des cours
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('courseSearch');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const priceFilter = document.getElementById('priceFilter');
+            const durationFilter = document.getElementById('durationFilter');
+
+            function filterCourses() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const category = categoryFilter.value;
+                const priceRange = priceFilter.value;
+                const duration = durationFilter.value;
+
+                const courses = document.querySelectorAll('.course-item');
+                courses.forEach(course => {
+                    let showCourse = true;
+                    const courseTitle = course.querySelector('h4').textContent.toLowerCase();
+                    const courseCategory = course.dataset.category;
+                    const coursePrice = parseFloat(course.dataset.price);
+
+                    // Filtre de recherche
+                    if (searchTerm && !courseTitle.includes(searchTerm)) {
+                        showCourse = false;
+                    }
+
+                    // Filtre de catégorie
+                    if (category !== 'all' && courseCategory !== category) {
+                        showCourse = false;
+                    }
+
+                    // Filtre de prix
+                    if (priceRange !== 'all') {
+                        const [min, max] = priceRange.split('-').map(Number);
+                        if (max && (coursePrice < min || coursePrice > max)) {
+                            showCourse = false;
+                        } else if (!max && coursePrice < min) {
+                            showCourse = false;
+                        }
+                    }
+
+                    course.closest('.col-lg-6').style.display = showCourse ? 'block' : 'none';
+                });
+            }
+
+            // Event listeners pour les filtres
+            searchInput.addEventListener('input', filterCourses);
+            categoryFilter.addEventListener('change', filterCourses);
+            priceFilter.addEventListener('change', filterCourses);
+            durationFilter.addEventListener('change', filterCourses);
+
+            // Counter animation
+            $('.counter').each(function() {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function(now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+        });
+
+ // ... existing code ...
+
+    // ... other functions ...
+
+    // Fonction de recherche globale
+    function searchSite() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+        
+        // Définition des sections du site avec leurs mots-clés
+        const sections = {
+            'index.html': ['accueil', 'home', 'photomastery', 'photographie'],
+            'index.html#courses': ['cours', 'formation', 'apprentissage', 'base', 'avancé', 'édition', 'studio'],
+            'about-us.html': ['propos', 'about', 'équipe', 'histoire'],
+            'contact-us.html': ['contact', 'message', 'email', 'téléphone']
+        };
+
+        // Si le champ de recherche est vide
+        if (!searchTerm) {
+            alert('Veuillez entrer un terme de recherche');
+            return;
+        }
+
+        // Parcourir toutes les sections
+        let found = false;
+        for (const [url, keywords] of Object.entries(sections)) {
+            if (keywords.some(keyword => keyword.includes(searchTerm) || searchTerm.includes(keyword))) {
+                window.location.href = url;
+                found = true;
+                break;
+            }
+        }
+
+        // Si aucune correspondance n'est trouvée
+        if (!found) {
+            alert('Aucun résultat trouvé pour : ' + searchTerm);
+        }
+    }
+
+    // Initialisation des écouteurs d'événements
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchButton = document.getElementById('searchButton');
+        const searchInput = document.getElementById('searchInput');
+
+        if (searchButton && searchInput) {
+            searchButton.addEventListener('click', searchSite);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchSite();
+                }
+            });
+        }
+    });
+</script>
+
+    
+</body>
+</html>
