@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <title>PhotoMastery - Photography HTML5 Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+</head>
+
+<body>
+    <button id="backToTopBtn" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <style>
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #backToTopBtn:hover {
+            background-color: #2980b9;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        #searchInput {
+            border: 2px solid #ffb6c1;
+            /* Light pink border */
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+            background-color: #fff5f5;
+            /* Light pink background */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
+        }
+
+        #searchInput:focus {
+            border-color: #ff69b4;
+            /* Darker pink border on focus */
+        }
+
+        #searchButton {
+            background-color: #ffb6c1;
+            /* Light pink background */
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            /* Soft shadow */
+        }
+
+        #searchButton:hover {
+            background-color: #ff69b4;
+            /* Darker pink background on hover */
+        }
+
+        .search-highlight {
+            background-color: rgba(255, 182, 193, 0.4);
+            border-radius: 3px;
+            padding: 2px 0;
+            animation: highlight-pulse 1.5s infinite;
+        }
+
+        @keyframes highlight-pulse {
+            0% {
+                background-color: rgba(255, 182, 193, 0.4);
+            }
+            50% {
+                background-color: rgba(255, 182, 193, 0.6);
+            }
+            100% {
+                background-color: rgba(255, 182, 193, 0.4);
+            }
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            margin: 0 15px;
+        }
+
+        #languageSelect {
+            padding: 8px 15px;
+            border: 2px solid #ffb6c1;
+            border-radius: 20px;
+            background-color: #fff5f5;
+            color: #333;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            padding-right: 30px;
+        }
+
+        #languageSelect:hover {
+            border-color: #ff69b4;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #languageSelect:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Style pour mobile */
+        @media (max-width: 767px) {
+            .language-selector {
+                margin: 10px 0;
+            }
+
+            #languageSelect {
+                width: 100px;
+                padding: 6px 25px 6px 10px;
+            }
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+    </script>
+    <script>
+        // Get the button
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        backToTopBtn.addEventListener("click", function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+    </script>
+    <script>
+        function searchSite() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!searchTerm) return;
+
+            // Récupérer tout le contenu textuel visible du site
+            const textNodes = [];
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: function(node) {
+                        // Ignorer les scripts et les styles
+                        if (node.parentElement.tagName === 'SCRIPT' ||
+                            node.parentElement.tagName === 'STYLE') {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+                        // Vérifier si le texte est visible
+                        const style = window.getComputedStyle(node.parentElement);
+                        if (style.display === 'none' || style.visibility === 'hidden') {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                }
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                const text = node.textContent.trim();
+                if (text) {
+                    textNodes.push({
+                        text: text,
+                        element: node.parentElement
+                    });
+                }
+            }
+
+            // Rechercher le terme dans le contenu
+            const matches = textNodes.filter(item =>
+                item.text.toLowerCase().includes(searchTerm)
+            );
+
+            // Supprimer les surlignages précédents
+            document.querySelectorAll('.search-highlight').forEach(el => {
+                el.outerHTML = el.innerHTML;
+            });
+
+            if (matches.length > 0) {
+                // Surligneur les résultats trouvés
+                matches.forEach(match => {
+                    const element = match.element;
+                    const text = element.innerHTML;
+                    const highlightedText = text.replace(
+                        new RegExp(searchTerm, 'gi'),
+                        match => `<span class="search-highlight">${match}</span>`
+                    );
+                    element.innerHTML = highlightedText;
+                });
+
+                // Faire défiler jusqu'au premier résultat
+                const firstHighlight = document.querySelector('.search-highlight');
+                if (firstHighlight) {
+                    firstHighlight.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            } else {
+                alert('Aucun résultat trouvé pour : ' + searchTerm);
+            }
+        }
+
+        // Ajouter les écouteurs d'événements
+        document.getElementById('searchButton').addEventListener('click', searchSite);
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchSite();
+            }
+        });
+    </script>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="logo.png" alt="Logo" width="150" height="50">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="search-bar">
+                                <input type="text" id="searchInput" placeholder="Rechercher...">
+                                <button id="searchButton"><i class="fa fa-search"></i></button>
+                            </li>
+                            <li class="language-selector">
+                                <select id="languageSelect" onchange="changeLanguage(this.value)">
+                                    <option value="fr">FR</option>
+                                    <option value="en">EN</option>
+                                </select>
+                            </li>
+                            <li class="scroll-to-section"><a href="#top" class="active" data-translate="home">Accueil</a></li>
+                            <li class="scroll-to-section"><a href="#services" data-translate="services">Services</a></li>
+                            <li class="scroll-to-section"><a href="#courses" data-translate="courses">Cours</a></li>
+                            <li class="has-sub">
+                                <a href="javascript:void(0)" data-translate="pages">Pages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="about-us.html" data-translate="about">A propos</a></li>
+                                    <li><a href="our-services.html" data-translate="other-services">Autre Services</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#testimonials" data-translate="testimonials">Temoignages</a></li>
+                            <li class="scroll-to-section"><a href="#contact-section" data-translate="contact">Contact</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <section class="main-banner" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="header-text">
+                        <h2 data-translate="hero-title">Le meilleur endroit pour apprendre <em><br>la photographie !</em></h2>
+                        <div class="main-button-gradient">
+                            <div class="scroll-to-section"><a href="#contact-section" data-translate="join-us">rejoingnez-moi</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-image">
+                        <img src="hand.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h6 data-translate="services-subtitle">Immortaliser vos instants, créer des souvenirs</h6>
+                        <h4 data-translate="services-title">Nos <em>Services</em></h4>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="owl-service-item owl-carousel">
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-01.png" alt="">
+                                </div>
+                                <h4 data-translate="portrait-photo">Photographie de Portrait</h4>
+                                <p data-translate="portrait-desc">Capturez des moments inoubliables avec nos services de photographie de portrait.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-02.png" alt="">
+                                </div>
+                                <h4 data-translate="landscape-photo">Photographie de Paysage</h4>
+                                <p data-translate="landscape-desc">Explorez la beauté de la nature avec nos services de photographie de paysage.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-03.png" alt="">
+                                </div>
+                                <h4 data-translate="wedding-photo">Photographie de Mariage</h4>
+                                <p data-translate="wedding-desc">Immortalisez le plus beau jour de votre vie avec nos services de photographie de mariage.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-04.png" alt="">
+                                </div>
+                                <h4 data-translate="product-photo">Photographie de Produit</h4>
+                                <p data-translate="product-desc">Mettez en valeur vos produits avec nos services de photographie de produit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-courses" id="courses">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h6 data-translate="courses-subtitle">NOS COURS</h6>
+                        <h4 data-translate="courses-title">Ce Que Vous Pouvez <em>Apprendre</em></h4>
+                        <p data-translate="courses-desc">Découvrez nos cours de photographie pour améliorer vos compétences</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="naccs">
+                        <div class="tabs">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="menu">
+                                        <div class="active gradient-border"><span data-translate="basic-photo">Photographie de Base</span></div>
+                                        <div class="gradient-border"><span data-translate="advanced-photo">Photographie Avancée</span></div>
+                                        <div class="gradient-border"><span data-translate="photo-editing">Édition de Photos</span></div>
+                                        <div class="gradient-border"><span data-translate="studio-photo">Photographie de Studio</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <ul class="nacc">
+                                        <li class="active">
+                                            <div>
+                                                <div class="left-image">
+                                                    <img src="assets/images/courses-01.jpg" alt="">
+                                                    <div class="price">
+                                                        <h6>$128</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="right-content">
+                                                    <h4 data-translate="basic-photo">Photographie de Base</h4>
+                                                    <p data-translate="basic-photo-desc">Apprenez les bases de la photographie et commencez à capturer de superbes images.
+                                                        <br><br>Ce cours est parfait pour les débutants qui veulent comprendre les principes fondamentaux de la photographie.
+                                                    </p>
+                                                    <span>36 Heures</span>
+                                                    <span>4 Semaines</span>
+                                                    <span class="last-span">3 Certificats</span>
+                                                    <div class="text-button">
+                                                        <a href="contact-us.html" data-translate="enroll">S'inscrire au Cours</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="left-image">
+                                                    <img src="assets/images/courses-02.jpg" alt="">
+                                                    <div class="price">
+                                                        <h6>$156</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="right-content">
+                                                    <h4 data-translate="advanced-photo">Photographie Avancée</h4>
+                                                    <p data-translate="advanced-photo-desc">Approfondissez vos compétences en photographie avec des techniques avancées.
+                                                        <br><br>Ce cours est destiné aux photographes ayant déjà une expérience de base.
+                                                    </p>
+                                                    <span>48 Heures</span>
+                                                    <span>6 Semaines</span>
+                                                    <span class="last-span">1 Certificat</span>
+                                                    <div class="text-button">
+                                                        <a href="contact-us.html" data-translate="enroll">S'inscrire au Cours</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="left-image">
+                                                    <img src="assets/images/courses-03.jpg" alt="">
+                                                    <div class="price">
+                                                        <h6>$184</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="right-content">
+                                                    <h4 data-translate="photo-editing">Édition de Photos</h4>
+                                                    <p data-translate="photo-editing-desc">Apprenez à éditer vos photos comme un pro avec des outils et des techniques avancés.
+                                                        <br><br>Ce cours couvre l'édition de photos avec des logiciels populaires comme Adobe Photoshop et Lightroom.
+                                                    </p>
+                                                    <span>28 Heures</span>
+                                                    <span>4 Semaines</span>
+                                                    <span class="last-span">1 Certificat</span>
+                                                    <div class="text-button">
+                                                        <a href="contact-us.html" data-translate="enroll">S'inscrire au Cours</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div class="left-image">
+                                                    <img src="assets/images/courses-04.jpg" alt="">
+                                                    <div class="price">
+                                                        <h6>$76</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="right-content">
+                                                    <h4 data-translate="studio-photo">Photographie de Studio</h4>
+                                                    <p data-translate="studio-photo-desc">Maîtrisez l'art de la photographie en studio avec des techniques d'éclairage et de mise en scène.
+                                                        <br><br>Ce cours est idéal pour les photographes qui souhaitent se spécialiser dans la photographie en studio.
+                                                    </p>
+                                                    <span>48 Heures</span>
+                                                    <span>4 Semaines</span>
+                                                    <span class="last-span">2 Certificats</span>
+                                                    <div class="text-button">
+                                                        <a href="contact-us.html" data-translate="enroll">S'inscrire au Cours</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="simple-cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="left-image">
+                        <img src="assets/images/cta-left-image.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-5 align-self-center">
+                    <h6 data-translate="special-offer">Profitez de nos offres spéciales !</h6>
+                    <h4 data-translate="discount">Jusqu'à 50% de réduction pour 1+ cours</h4>
+                    <p data-translate="offer-desc">Découvrez nos offres spéciales et économisez sur nos cours de photographie.</p>
+                    <div class="white-button">
+                        <a href="contact-us.html" data-translate="view-courses">Voir les Cours</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h6 data-translate="testimonials-title">Témoignages</h6>
+                    <h4 data-translate="testimonials-subtitle">Ce qu'ils <em>Pensent</em></h4>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="owl-testimonials owl-carousel" style="position: relative; z-index: 5;">
+                    <div class="item">
+                        <p data-translate="testimonial-1">« PhotoMastery est le meilleur endroit pour apprendre la photographie. Les cours sont excellents et les instructeurs sont très compétents. »</p>
+                        <h4 data-translate="testimonial-1-name">Catherine Walk</h4>
+                        <span data-translate="testimonial-1-role">Photographe Professionnel</span>
+                        <img src="assets/images/quote.png" alt="">
+                    </div>
+                    <div class="item">
+                        <p data-translate="testimonial-2">« J'ai beaucoup appris grâce aux cours de PhotoMastery. Je recommande vivement leurs services. »</p>
+                        <h4 data-translate="testimonial-2-name">David Martin</h4>
+                        <span data-translate="testimonial-2-role">Photographe Amateur</span>
+                        <img src="assets/images/quote.png" alt="">
+                    </div>
+                    <div class="item">
+                        <p data-translate="testimonial-3">« Les cours de PhotoMastery sont incroyables. J'ai pu améliorer mes compétences en photographie grâce à eux. »</p>
+                        <h4 data-translate="testimonial-3-name">Sophia Whity</h4>
+                        <span data-translate="testimonial-3-role">Photographe de Mariage</span>
+                        <img src="assets/images/quote.png" alt="">
+                    </div>
+                    <div class="item">
+                        <p data-translate="testimonial-4">« PhotoMastery offre des cours de photographie de haute qualité. Je suis très satisfait de leur service. »</p>
+                        <h4 data-translate="testimonial-4-name">Helen Shiny</h4>
+                        <span data-translate="testimonial-4-role">Photographe de Paysage</span>
+                        <img src="assets/images/quote.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="contact-us" id="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="map">
+                        <!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45025.20829514297!2d1.4731741942890335!3d45.14506658264894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f8bd494a823efb%3A0x405d39260ee76f0!2s19100%20Brive-la-Gaillarde!5e0!3m2!1sfr!2sfr!4v1741776776519!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            width="100%" height="420px" frameborder="0"
+                            style="border:0; border-radius: 15px; position: relative; z-index: 2;" allowfullscreen=""></iframe>
+                        <div class="row">
+                            <div class="col-lg-4 offset-lg-1">
+                                <div class="contact-info">
+                                    <div class="icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <h4 data-translate="phone">Téléphone</h4>
+                                    <span>010-020-0340</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="contact-info">
+                                    <div class="icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <h4 data-translate="mobile">Mobile</h4>
+                                    <span>090-080-0760</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <form id="contact" action="" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-heading">
+                                    <h6 data-translate="contact-us">Contactez-nous</h6>
+                                    <h4 data-translate="say-hello">Dites <em>Bonjour</em></h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input type="name" name="name" id="name" placeholder="Nom Complet" autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Votre Email" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <textarea name="message" id="message" placeholder="Votre Message"></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-gradient-button" data-translate="send-message">Envoyer le Message</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12">
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <p class="copyright" data-translate="copyright">Copyright © 2022 PhotoMastery Co., Ltd. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var
+                direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                    scrollTop: reqSectionPos
+                },
+                    800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+
+        };
+
+        var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var
+                    $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var
+                        currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                    reqLink.closest('li').addClass('active').
+                        siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+            checkSection();
+        });
+    </script>
+
+<script>
+const translations = {
+    fr: {
+        // Navigation
+        "home": "Accueil",
+        "services": "Services",
+        "courses": "Cours",
+        "pages": "Pages",
+        "about": "À propos",
+        "other-services": "Autres Services",
+        "testimonials": "Témoignages",
+        "contact": "Contact",
+
+        // Hero Section
+        "hero-title": "Le meilleur endroit pour apprendre <em><br>la photographie !</em>",
+        "join-us": "Rejoignez-nous",
+
+        // Services Section
+        "services-subtitle": "Immortaliser vos instants, créer des souvenirs",
+        "services-title": "Nos <em>Services</em>",
+        "portrait-photo": "Photographie de Portrait",
+        "portrait-desc": "Capturez des moments inoubliables avec nos services de photographie de portrait.",
+        "landscape-photo": "Photographie de Paysage",
+        "landscape-desc": "Explorez la beauté de la nature avec nos services de photographie de paysage.",
+        "wedding-photo": "Photographie de Mariage",
+        "wedding-desc": "Immortalisez le plus beau jour de votre vie avec nos services de photographie de mariage.",
+        "product-photo": "Photographie de Produit",
+        "product-desc": "Mettez en valeur vos produits avec nos services de photographie de produit.",
+
+        // Courses Section
+        "courses-subtitle": "NOS COURS",
+        "courses-title": "Ce Que Vous Pouvez <em>Apprendre</em>",
+        "courses-desc": "Découvrez nos cours de photographie pour améliorer vos compétences",
+        "basic-photo": "Photographie de Base",
+        "advanced-photo": "Photographie Avancée",
+        "photo-editing": "Édition de Photos",
+        "studio-photo": "Photographie de Studio",
+        "hours": "Heures",
+        "weeks": "Semaines",
+        "certificates": "Certificats",
+        "enroll": "S'inscrire au Cours",
+
+        // CTA Section
+        "special-offer": "Profitez de nos offres spéciales !",
+        "discount": "Jusqu'à 50% de réduction pour 1+ cours",
+        "offer-desc": "Découvrez nos offres spéciales et économisez sur nos cours de photographie.",
+        "view-courses": "Voir les Cours",
+
+        // Testimonials Section
+        "testimonials-title": "Témoignages",
+        "testimonials-subtitle": "Ce qu'ils <em>Pensent</em>",
+        "testimonial-1": "PhotoMastery est le meilleur endroit pour apprendre la photographie. Les cours sont excellents et les instructeurs sont très compétents.",
+        "testimonial-1-name": "Catherine Walk",
+        "testimonial-1-role": "Photographe Professionnel",
+        "testimonial-2": "J'ai beaucoup appris grâce aux cours de PhotoMastery. Je recommande vivement leurs services.",
+        "testimonial-2-name": "David Martin",
+        "testimonial-2-role": "Photographe Amateur",
+        "testimonial-3": "Les cours de PhotoMastery sont incroyables. J'ai pu améliorer mes compétences en photographie grâce à eux.",
+        "testimonial-3-name": "Sophia Whity",
+        "testimonial-3-role": "Photographe de Mariage",
+        "testimonial-4": "PhotoMastery offre des cours de photographie de haute qualité. Je suis très satisfait de leur service.",
+        "testimonial-4-name": "Helen Shiny",
+        "testimonial-4-role": "Photographe de Paysage",
+
+        // Contact Section
+        "contact-us": "Contactez-nous",
+        "say-hello": "Dites <em>Bonjour</em>",
+        "full-name": "Nom Complet",
+        "your-email": "Votre Email",
+        "your-message": "Votre Message",
+        "send-message": "Envoyer le Message",
+        "phone": "Téléphone",
+        "mobile": "Mobile",
+
+        // Footer
+        "copyright": "Copyright © 2022 PhotoMastery Co., Ltd. Tous droits réservés."
+    },
+    en: {
+        // Navigation
+        "home": "Home",
+        "services": "Services",
+        "courses": "Courses",
+        "pages": "Pages",
+        "about": "About",
+        "other-services": "Other Services",
+        "testimonials": "Testimonials",
+        "contact": "Contact",
+
+        // Hero Section
+        "hero-title": "The best place to learn <em><br>photography!</em>",
+        "join-us": "Join us",
+
+        // Services Section
+        "services-subtitle": "Capture your moments, create memories",
+        "services-title": "Our <em>Services</em>",
+        "portrait-photo": "Portrait Photography",
+        "portrait-desc": "Capture unforgettable moments with our portrait photography services.",
+        "landscape-photo": "Landscape Photography",
+        "landscape-desc": "Explore nature's beauty with our landscape photography services.",
+        "wedding-photo": "Wedding Photography",
+        "wedding-desc": "Immortalize the best day of your life with our wedding photography services.",
+        "product-photo": "Product Photography",
+        "product-desc": "Showcase your products with our product photography services.",
+
+        // Courses Section
+        "courses-subtitle": "OUR COURSES",
+        "courses-title": "What You Can <em>Learn</em>",
+        "courses-desc": "Discover our photography courses to improve your skills",
+        "basic-photo": "Basic Photography",
+        "advanced-photo": "Advanced Photography",
+        "photo-editing": "Photo Editing",
+        "studio-photo": "Studio Photography",
+        "hours": "Hours",
+        "weeks": "Weeks",
+        "certificates": "Certificates",
+        "enroll": "Enroll Course",
+
+        // CTA Section
+        "special-offer": "Take advantage of our special offers!",
+        "discount": "Up to 50% off for 1+ courses",
+        "offer-desc": "Discover our special offers and save on our photography courses.",
+        "view-courses": "View Courses",
+
+        // Testimonials Section
+        "testimonials-title": "Testimonials",
+        "testimonials-subtitle": "What They <em>Think</em>",
+        "testimonial-1": "PhotoMastery is the best place to learn photography. The courses are excellent and the instructors are very competent.",
+        "testimonial-1-name": "Catherine Walk",
+        "testimonial-1-role": "Professional Photographer",
+        "testimonial-2": "I have learned a lot thanks to the courses of PhotoMastery. I highly recommend their services.",
+        "testimonial-2-name": "David Martin",
+        "testimonial-2-role": "Amateur Photographer",
+        "testimonial-3": "The courses of PhotoMastery are incredible. I was able to improve my photography skills thanks to them.",
+        "testimonial-3-name": "Sophia Whity",
+        "testimonial-3-role": "Wedding Photographer",
+        "testimonial-4": "PhotoMastery offers high-quality photography courses. I am very satisfied with their service.",
+        "testimonial-4-name": "Helen Shiny",
+        "testimonial-4-role": "Landscape Photographer",
+
+        // Contact Section
+        "contact-us": "Contact Us",
+        "say-hello": "Say <em>Hello</em>",
+        "full-name": "Full Name",
+        "your-email": "Your Email",
+        "your-message": "Your Message",
+        "send-message": "Send Message",
+        "phone": "Phone",
+        "mobile": "Mobile",
+
+        // Footer
+        "copyright": "Copyright © 2022 PhotoMastery Co., Ltd. All rights reserved."
+    }
+};
+
+function changeLanguage(lang) {
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+
+    localStorage.setItem('selectedLanguage', lang);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+    document.getElementById('languageSelect').value = savedLanguage;
+    changeLanguage(savedLanguage);
+});
+</script>
+
+
+</body>
+
+</html>
