@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <title>PhotoMastery - Modèle HTML5 de Photographie</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+</head>
+
+<body>
+    <button id="backToTopBtn" title="Retour en haut">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <style>
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #backToTopBtn:hover {
+            background-color: #2980b9;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            padding-left: 20px;
+        }
+
+        #searchInput {
+            border: 2px solid #ffb6c1;
+            /* Bordure rose clair */
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+            background-color: #fff5f5;
+            /* Fond rose clair */
+            width: 180px;
+            color: #1f272b;
+        }
+
+        #searchInput:focus {
+            border-color: #ff69b4;
+            /* Bordure rose plus foncé au focus */
+            width: 220px;
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+        }
+
+        #searchButton {
+            background-color: #ffb6c1;
+            /* Fond rose clair */
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            /* Ombre douce */
+        }
+
+        #searchButton:hover {
+            background-color: #ff69b4;
+            /* Fond rose plus foncé au survol */
+        }
+
+        /* Ajustement pour la version responsive */
+        @media screen and (max-width: 991px) {
+            .search-bar {
+                position: absolute;
+                right: 70px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            #searchInput {
+                width: 150px;
+            }
+
+            #searchInput:focus {
+                width: 180px;
+            }
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+    </script>
+    <script>
+        // Get the button
+        let backToTopBtn = document.getElementById("backToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        backToTopBtn.addEventListener("click", function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+    </script>
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function () {
+            alert('Bouton de recherche cliqué !');
+        });
+    </script>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="logo.png" alt="Logo" width="150" height="50">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <!-- ... existing code ... -->
+<ul class="nav">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="index.html">Services</a></li>
+    <li><a href="index.html">Cours</a></li>
+    <li class="has-sub">
+        <a href="javascript:void(0)">Pages</a>
+        <ul class="sub-menu">
+            <li><a href="about-us.html">À Propos</a></li>
+            <li><a href="our-services.html">Nos Services</a></li>
+        </ul>
+    </li>
+    <li><a href="index.html">Témoignages</a></li>
+    <li><a href="index.html">Contactez-nous</a></li>
+    <li class="search-bar">
+        <input type="text" id="searchInput" placeholder="Rechercher...">
+        <button id="searchButton"><i class="fa fa-search"></i></button>
+    </li>
+</ul>
+<!-- Supprimer la div search-bar qui était après le ul -->
+<a class='menu-trigger'>
+    <span>Menu</span>
+</a>
+<!-- ... existing code ... -->
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-text">
+                        <h4>Ce que nous faisons</h4>
+                        <h1>Nos Services</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h6>Nos Services</h6>
+                        <h4>Services <em>Proposés</em></h4>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="owl-service-item owl-carousel">
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-01.png" alt="">
+                                </div>
+                                <h4>Photographie de Portrait</h4>
+                                <p>Capturez des moments inoubliables avec nos services de photographie de portrait.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-02.png" alt="">
+                                </div>
+                                <h4>Photographie de Paysage</h4>
+                                <p>Explorez la beauté de la nature avec nos services de photographie de paysage.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-03.png" alt="">
+                                </div>
+                                <h4>Photographie de Mariage</h4>
+                                <p>Immortalisez le plus beau jour de votre vie avec nos services de photographie de mariage.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="service-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-04.png" alt="">
+                                </div>
+                                <h4>Photographie de Produit</h4>
+                                <p>Mettez en valeur vos produits avec nos services de photographie de produit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="simple-cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="left-image">
+                        <img src="assets/images/cta-left-image.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-5 align-self-center">
+                    <h6>Profitez de la promotion dès maintenant !</h6>
+                    <h4>Jusqu'à 50% de réduction pour 1+ cours</h4>
+                    <p>Rejoignez nos cours de photographie et bénéficiez de jusqu'à 50% de réduction sur votre premier cours. Améliorez vos compétences et capturez des images époustouflantes avec notre guidance experte.</p>
+                    <div class="white-button">
+                        <a href="contact-us.html">Voir les Cours</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h6>Service en Vedette</h6>
+                        <h4>Le Meilleur de notre <em>Produit</em></h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 align-self-center">
+                    <div class="left-info">
+                        <div class="col-lg-12">
+                            <div class="info-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-01.png" alt="">
+                                </div>
+                                <h4>Meilleure Stratégie</h4>
+                                <p>Nos cours sont conçus pour vous fournir les meilleures stratégies et techniques pour capturer des photographies époustouflantes.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="info-item last-info">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-01.png" alt="">
+                                </div>
+                                <h4>Meilleure Stratégie</h4>
+                                <p>Nos cours sont conçus pour vous fournir les meilleures stratégies et techniques pour capturer des photographies époustouflantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-image">
+                        <img src="assets/images/featured-product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 align-self-center">
+                    <div class="right-info">
+                        <div class="col-lg-12">
+                            <div class="info-item">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-01.png" alt="">
+                                </div>
+                                <h4>Meilleure Stratégie</h4>
+                                <p>Nos cours sont conçus pour vous fournir les meilleures stratégies et techniques pour capturer des photographies époustouflantes.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="info-item last-info">
+                                <div class="icon">
+                                    <img src="assets/images/service-icon-01.png" alt="">
+                                </div>
+                                <h4>Meilleure Stratégie</h4>
+                                <p>Nos cours sont conçus pour vous fournir les meilleures stratégies et techniques pour capturer des photographies époustouflantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us our-office">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="left-info">
+                        <div class="section-heading">
+                            <h6>Notre Bureau</h6>
+                            <h4>Rapprochez-vous de <em>PhotoMastery</em></h4>
+                        </div>
+                        <p>Chez PhotoMastery, nous sommes dédiés à vous aider à capturer le monde à travers votre objectif. Que vous soyez débutant ou professionnel, nos cours et services sont conçus pour vous aider à atteindre vos objectifs photographiques.<br><br>Rejoignez notre communauté de photographes passionnés et laissez-nous vous guider dans votre parcours pour devenir un maître photographe.</p>
+                        <ul>
+                            <li>- Capturez le monde à travers votre objectif.</li>
+                            <li>- Améliorez vos compétences en photographie.</li>
+                            <li>- Rejoignez une communauté de photographes passionnés.</li>
+                            <li>- Atteignez vos objectifs photographiques.</li>
+                        </ul>
+                        <div class="main-button-gradient">
+                            <a href="our-services.html">Nos Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div id="video">
+                        <div class="thumb">
+                            <img src="assets/images/video-thumb.jpg" alt="">
+                            <div class="play-button">
+                                <a href="http://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <p class="copyright">Copyright © 2022 PhotoMastery Co., Ltd. Tous droits réservés.
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="contact-us" id="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="map">
+                        <!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45025.20829514297!2d1.4731741942890335!3d45.14506658264894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f8bd494a823efb%3A0x405d39260ee76f0!2s19100%20Brive-la-Gaillarde!5e0!3m2!1sfr!2sfr!4v1741776776519!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            width="100%" height="420px" frameborder="0"
+                            style="border:0; border-radius: 15px; position: relative; z-index: 2;" allowfullscreen=""></iframe>
+                        <div class="row">
+                            <div class="col-lg-4 offset-lg-1">
+                                <div class="contact-info">
+                                    <div class="icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <h4 data-translate="phone">Téléphone</h4>
+                                    <span>010-020-0340</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="contact-info">
+                                    <div class="icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <h4 data-translate="mobile">Mobile</h4>
+                                    <span>090-080-0760</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <form id="contact" action="" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-heading">
+                                    <h6 data-translate="contact-us">Contactez-nous</h6>
+                                    <h4 data-translate="say-hello">Dites <em>Bonjour</em></h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input type="name" name="name" id="name" placeholder="Nom Complet" autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Votre Email" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <textarea name="message" id="message" placeholder="Votre Message"></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-gradient-button" data-translate="send-message">Envoyer le Message</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12">
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <p class="copyright" data-translate="copyright">Copyright © 2022 PhotoMastery Co., Ltd. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var
+                direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                    scrollTop: reqSectionPos
+                },
+                    800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+
+        };
+
+        var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var
+                    $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var
+                        currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                    reqLink.closest('li').addClass('active').
+                        siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+            checkSection();
+        });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Définition des sections du site avec leurs mots-clés
+    const sections = {
+        'index.html': ['accueil', 'home', 'photomastery', 'photographie'],
+        'index.html#services': ['services', 'portrait', 'paysage', 'mariage', 'produit'],
+        'index.html#courses': ['cours', 'formation', 'apprentissage', 'base', 'avancé', 'édition', 'studio'],
+        'index.html#testimonials': ['témoignages', 'avis', 'commentaires'],
+        'index.html#contact-section': ['contact', 'message', 'email', 'téléphone'],
+        'about-us.html': ['propos', 'about', 'équipe', 'histoire'],
+        'our-services.html': ['services', 'prestations', 'photographie', 'portrait', 'paysage', 'mariage', 'produit']
+    };
+
+    // Fonction de recherche
+    function searchSite() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        console.log('Recherche de:', searchTerm); // Debug
+
+        // Si le champ de recherche est vide
+        if (!searchTerm) {
+            alert('Veuillez entrer un terme de recherche');
+            return;
+        }
+
+        // Parcourir toutes les sections
+        let found = false;
+        for (const [url, keywords] of Object.entries(sections)) {
+            console.log('Vérification des mots-clés:', keywords); // Debug
+            if (keywords.some(keyword => keyword.includes(searchTerm) || searchTerm.includes(keyword))) {
+                console.log('Correspondance trouvée! Redirection vers:', url); // Debug
+                window.location.href = url;
+                found = true;
+                break;
+            }
+        }
+
+        // Si aucune correspondance n'est trouvée
+        if (!found) {
+            alert('Aucun résultat trouvé pour : ' + searchTerm);
+        }
+    }
+
+    // Ajouter les écouteurs d'événements
+    const searchButton = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
+
+    if (searchButton && searchInput) {
+        searchButton.addEventListener('click', searchSite);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchSite();
+            }
+        });
+        console.log('Écouteurs d\'événements ajoutés'); // Debug
+    } else {
+        console.error('Éléments de recherche non trouvés'); // Debug
+    }
+});
+</script>
+</body>
+
+</html>
